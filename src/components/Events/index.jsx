@@ -3,25 +3,20 @@ import data from "../../data/events.json";
 
 console.log(data);
 
-const {
-  _embedded: { events },
-} = data;
+const {_embedded: { events }} = data;
 
 const Events = () => {
-   const eventsComponent = events.map((eventItem) => {
-  
-    const imageUrl = eventItem.image && Array.isArray(eventItem.image) && eventItem.image.length > 0
-    ? eventItem.image[0].url
-    : 'defaultImageUrl'; // Provide a default image URL or handle it as needed
+
+  const eventsComponent = events.map((eventItem) => {   
     return(    
-    <EventItem 
+      <EventItem 
       key={`event-item-${eventItem.id}`}
       name={eventItem.name}
       info={eventItem.info}
-      image={imageUrl}
-       />  
-    ) 
-  });
+      image={eventItem.images[0].url}      
+       />       
+    )
+   });
     
   return (
     <div>
