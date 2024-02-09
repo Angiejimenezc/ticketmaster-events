@@ -10,6 +10,7 @@ function App() {
     setSearchTerm(term);
   };
 
+  //tenemos que guardar una bandera para saber si el usuario esta buscando o no crear un estado para eso.
   console.log(searchTerm, 10);
 
   return (
