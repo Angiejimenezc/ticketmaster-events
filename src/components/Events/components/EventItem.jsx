@@ -1,9 +1,18 @@
-const EventItem = ({ info, name, image }) => {
+const EventItem = ({ info, id, name, image, onEventClick }) => {
+  const handleSeeMoreClick = (evt) => {
+    //detiene la propagacion del evento del padre
+    evt.stopPropagation();
+    onEventClick(id);
+  };
+
   return (
     <>
-      <img src={image} alt="name" width={200} height={200} h="true" />
-      <p>{info}</p>
-      <h4>{name}</h4>
+      <div onClick={() => console.log("click en el padre")}>
+        <img src={image} alt="name" width={200} height={200} />
+        <p>{info}</p>
+        <h4>{name}</h4>
+        <button onClick={handleSeeMoreClick}>Ver mas</button>
+      </div>
     </>
   );
 };
