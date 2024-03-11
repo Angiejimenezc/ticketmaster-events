@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+// eslint-disable-next-line react/prop-types
 const Navbar = ({ onSearch }) => {
   const [search, setSearch] = useState("");
 
