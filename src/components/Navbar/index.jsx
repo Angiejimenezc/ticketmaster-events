@@ -1,7 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = ({ onSearch }) => {
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    console.log("onSearch cambió");
+  }, [onSearch]);
+
+  useEffect(() => {
+    console.log("componente listo");
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      console.log("search cambió");
+    };
+  }, [search]);
 
   //evento que se dispara cuando el valor del input cambia
   const handleInputChange = (event) => {
