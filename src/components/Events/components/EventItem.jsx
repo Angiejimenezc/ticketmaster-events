@@ -15,7 +15,7 @@ const EventItem = ({ info, id, name, image, onEventClick }) => {
     <>
       <div
         onClick={() => console.log("click en el padre")}
-        className={styles.eventItemContainer}
+        className={`${styles.eventItemContainer} ${styles.anotherContainer}`}
       >
         <img src={image} alt="name" width={200} height={200} />
         <div className={styles.eventInfoContainer}>
