@@ -1,7 +1,6 @@
 /* import "./styles.css"; */
 import styles from "./EventItem.module.css";
-
-console.log(styles);
+/* import { Link } from "react-router-dom"; */
 
 // eslint-disable-next-line react/prop-types
 const EventItem = ({ info, id, name, image, onEventClick }) => {
@@ -22,6 +21,7 @@ const EventItem = ({ info, id, name, image, onEventClick }) => {
           <h4 className={styles.eventName}>{name}</h4>
           <p className={styles.eventInfo}>{info}</p>
           <button onClick={handleSeeMoreClick} className={styles.seeMoreBtn}>
+            {/*         <Link to={`/detail:${id}`}></Link> */}
             Ver mas
           </button>
         </div>
