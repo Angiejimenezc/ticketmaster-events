@@ -1,4 +1,7 @@
-import "./styles.css";
+/* import "./styles.css"; */
+import styles from "./EventItem.module.css";
+
+console.log(styles);
 
 // eslint-disable-next-line react/prop-types
 const EventItem = ({ info, id, name, image, onEventClick }) => {
@@ -12,12 +15,16 @@ const EventItem = ({ info, id, name, image, onEventClick }) => {
     <>
       <div
         onClick={() => console.log("click en el padre")}
-        className="event-item-container"
+        className={styles.eventItemContainer}
       >
         <img src={image} alt="name" width={200} height={200} />
-        <p>{info}</p>
-        <h4>{name}</h4>
-        <button onClick={handleSeeMoreClick}>Ver mas</button>
+        <div className={styles.eventInfoContainer}>
+          <h4 className={styles.eventName}>{name}</h4>
+          <p className={styles.eventInfo}>{info}</p>
+          <button onClick={handleSeeMoreClick} className={styles.seeMoreBtn}>
+            Ver mas
+          </button>
+        </div>
       </div>
     </>
   );
