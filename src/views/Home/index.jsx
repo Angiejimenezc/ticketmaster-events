@@ -1,22 +1,35 @@
 import Navbar from "../../components/Navbar";
 import Events from "../../components/Events";
 import { useState, useRef } from "react";
+import useEventsData from "../../hooks/useEventsData";
+import { useEffect } from "react";
 /* import SignupForm from "./components/SignupForm"; */
 
 const Home = () => {
+  const { events, isLoading, error, fetchEvents } = useEventsData();
   const [searchTerm, setSearchTerm] = useState("");
   const containerRef = useRef();
+
+  useEffect(() => {
+    fetchEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleNavberSearch = (term) => {
     console.log(containerRef.current);
     setSearchTerm(term);
+    fetchEvents(`&keyword=${term}`);
   };
-  //tenemos que guardar una bandera para saber si el usuario esta buscando o no crear un estado para eso.
-  /*   console.log(searchTerm, 10); */
+
   return (
     <>
       <Navbar onSearch={handleNavberSearch} ref={containerRef} />
-      <Events searchTerm={searchTerm} />
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <Events searchTerm={searchTerm} events={events} />
+      )}
+      {!!error && <div>Ha ocurrido un error</div>}
     </>
   );
 };

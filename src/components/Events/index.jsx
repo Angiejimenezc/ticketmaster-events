@@ -1,10 +1,9 @@
-import useEventsData from "../../hooks/useEventsData";
+/* import useEventsData from "../../hooks/useEventsData"; */
 import EventItem from "./components/EventItem";
 import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const Events = ({ searchTerm }) => {
-  const { events, isLoading, error } = useEventsData();
+const Events = ({ searchTerm, events }) => {
   const navigate = useNavigate();
 
   const handleEventItemClick = (id) => {
@@ -31,14 +30,6 @@ const Events = ({ searchTerm }) => {
       />
     ));
   };
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
 
   return (
     <div>
